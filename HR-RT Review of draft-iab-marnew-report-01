@@ -1,0 +1,135 @@
+This is a review done within the framework of the Human Rights Review
+Team. It was done by Amelia Andersdotter and Shivan Kaul Sahib. The Human
+Rights Review Team aims to implement and improve the guidelines for
+human rights considerations provided in RFC8280, and seek to mitigate
+potentially adverse human rights impacts that IETF and IRTF documents
+might have.
+
+We find the topics addressed during the workshop interesting and look
+forward to following future developments.
+
+---
+
+Document: draft-iab-marnew-report-01
+https://datatracker.ietf.org/doc/draft-iab-marnew-report/
+
+Review:
+
+The Human Rights in Protocols Research Group welcomes the draft report from the MaRNEW workshop. In particular, we welcome the efforts to continue advancing an encrypted, secure and human rights enabling environment, as well as solid assessments of the potential impacts of considered remedies to mobile network operator difficulties on the right to privacy of an individual.
+
+In this regard, we wish to remind the drafters and the IAB of the inherent connection between privacy and freedom of expression. The right to privacy, or to one's own personhood, reinforces the freedom of expression and freedom of opinion.
+
+Semantic Suggestions
+===========================
+
+The following sections addresses a few semantic problems in the draft report, that were they solved the draft report would be easier to parse from both a human rights perspective, and from a business, legal or technical perspective.
+
+1. Abstract, para 2:
+
+Problem: Draft text contains  value judgements on participants' presentations that could be avoided.
+
+Solution: Remove the word "honest" in relation to CDN presentations, since it may cause readers to assume that other presenters were less forthcoming.
+
+The new paragraph would read
+
+   The group discussed the current Internet encryption trends and
+   deployment issues identified within the IETF, and the privacy needs
+   of users which should be adhered.  Solutions designed around sharing
+   data from the network to the endpoints and vice versa were then
+   discussed as well as analysing whether the current issues experienced
+   on the transport layer are also playing a role here.  Content
+   providers and CDNs gave their views of delivering
+   content with mobile network operators.  Finally, technical responses
+   to regulation was discussed to help the regulated industries relay
+   the issues of impossible to implement or bad-for-privacy technologies
+   back to regulators.
+
+2. Section 1, Introduction:
+
+Problem: It is unclear whether the "requirements" referred to imply regulatory requirements enforceable by government authorities, or technical requirements. Because of the nature of issues discussed during the workshop, understanding what sorts of "requirements" are being referred to is imperative.
+
+Solution: Specify the nature of the requirements being referred to, or remove the reference to requirements.
+
+The new Introduction would read
+
+   Mobile networks have a set of properties which
+   places a large emphasis on sophisticated bandwidth optimization.
+   Encryption is increasing on the Internet which is positive for
+   consumer and business privacy and security.  Many existing mobile
+   bandwidth optimization solutions primarily operate on non-encrypted
+   communications; this can lead to performance issues being amplified
+   on mobile networks.  Encryption on networks will continue to
+   increase; and with this understanding the workshop aimed to
+   understand how we can solve the issues of bandwidth optimization and
+   performance on radio networks in this encrypted world.
+
+3. Section 1.1:
+
+Problem: The first paragraph mixes business models with technical necessities. The last paragraph in the section Understanding "Bandwidth Optimization" refers to regulatory requirements (within the meaning of government enforced requirements or legal requirements, cf above) on mobile network operators to perform traffic filtering and monitoring.
+
+Solution: It may facilitate understanding of human rights impacts to separate technical considerations from business considerations and legal considerations. Paragraph 3 ("Many of these functions can continue...") could be put as the last paragraph, while Paragraph 1 could be split into a technical section and a business model section, followed by a legal section.
+
+
+   For the purposes of this workshop, bandwidth optimization encompasses
+   a variety of technical topics related to traffic engineering,
+   prioritisation, optimisation and efficiency enhancements. It also encompasses
+   user-related topics such as specific subscription or billing models, and may touch upon regulatory aspects or other issues relating to regulatory, within the meaning of government initiated, concerns.
+
+   The first category of bandwidth optimization includes:
+
+   o  Caching
+
+   o  Prioritisation of interactive traffic over background traffic
+
+   o  Per-user bandwidth limit
+   
+   The second category of bandwidth optimization may depend on either of the first category optimization strategies, but may, in particular, also encompass:
+
+   o  Business-related topics such as content delivery arrangements with
+      specific content providers.
+      
+   Finally, while not strictly speaking traffic management, some
+   networks employ policy-based filtering (e.g., requested parental
+   controls) and many networks support some form of legal interception
+   functionality per applicable laws.
+
+   Many of these functions can continue as they're performed today, even
+   with more encryption.  Others are using methods which inspect parts
+   of the communication that are encrypted, and these will have to be
+   done differently in an encrypted Internet.
+
+
+4. Section 4:
+
+Problem: QUIC is an active area of work for the IETF in the transport layer - this section barely mentions it, and even then does so vaguely. What problems are solved by QUIC that are general problems rather than TCP problems? What was the nature of the disagreement around this?
+
+Solution: More detail about how QUIC fits into transport-layer work would make this section more relevant. In addition, there has been discussion involving network operators around technical details that have potential privacy impacts within the QUIC working group (SPIN bit); this section would benefit greatly from an examination of that.
+
+
+
+Human Rights Considerations
+===========================
+
+Upon consideration of the draft report, no implications for internationalization ([RFC8280], sec. 6.2.5), heterogeneity support ([RFC8280], sec. 6.2.8), accessibility ([RFC8280], sec. 6.2.11) or localization ([RFC8280], sec. 6.2.12) have been found. We will further suppose that issues relating to Anonymity ([RFC8280], sec. 6.2.9), Pseudonymity ([RFC8280], sec. 6.2.10) and Confidentiality ([RFC8280], sec. 6.2.16) have been sufficiently addressed in the draft as is.
+
+In the below text, Security ([RFC8280], sec. 6.2.4), Integrity ([RFC8280], sec. 6.2.16) and Authenticity ([RFC8280], sec. 6.2.17) are further considered to have been addressed, or as in progress of being addressed by the specific endeavours pointed out in the report. As such, this assessment hopes to serve as a complement to remaining Human Rights Considerations Guidelines which were not addressed by the MaRNEW draft.
+
+## Privacy ([RFC8280], sec. 6.2.2)
+
+We laud the general emphasis on considering user privacy concerns paramount [Section 2.1.1, 2.3 etc]. 
+
+In Section 3.1.1, para 1, it would be useful to emphasize that middleboxes that are "authenticated and invoked explicitly" might not be very effective at conserving user privacy if they lead to auto-click through. In practice, "opted-in" middleboxes might not be much better than transparent middleboxes. Additionally, this poses the danger of making matters worse if users assume that because they haven't been asked for middlebox permission, they are not going through a middlebox. For users accessing the Internet on a browser client: if the connection is MITMed by a middlebox, the browser would somehow need to convey this effectively and actionably to the user. Whatever effort is expended on this should involve browser vendors.
+
+## Connectivity ([RFC8280], sec. 6.2.1)
+
+It is a priori obvious that a discussion with mobile network operators would touch upon connectivity. As a general comment, the HRPC RG is not concerned that encrypted internet traffic could create topological problems in network deployment with respect to density of base stations. It is more sensible to imagine that the density of base stations is kept low by deployers to save money on infrastructure roll-out.
+
+In the MarNEW draft report, middleboxes are brought up frequently as an example of infrastructure rendered less useful by the ubiquitous adoption of encryption. Middleboxes may enhance access to content for individuals, and may also interfere with their ability to enjoy content free of surveillance, censorship or content manipulation. The focus of the workshop of exploring ways in which encrypted materials can benefit from the same speed of deliverance as un-encrypted materials is therefore welcome.
+
+## Content Agnosticism
+
+Traffic prioritisation, whether based on technical or commercial grounds, risks interfering with an individual's right to freedom of expression or opinion, by restricting access or enjoy content of their own choosing. As such, prioritisation should be made explicit and obvious, and subject to consent from the individual, whether the motivations for deployment are commercial or technical.
+
+It is clear that internet filtering and blocking of content of specific types, whether motivated by network management or regulatory concerns, does not fulfill a content agnosticism criterion. It is the observation of HRPC that [RFC7725] (An HTTP Status Code to Report Legal Obstacles) may assist communication of specific filtering and blocking operations in action.
+
+It the the impetus of the Human Rights Guidelines in RFC8280 that content agnosticism be respected by protocols developed in the IETF, and in general an accepted view in the global human rights community that content agnosticism is desirable at all levels of technical infrastructure. As such, the HRPC RG is concerned about ideas that traffic be classified through additional headers or metadata, identifying traffic via 5-tuples, trust models and frameworks, or heuristics.
