@@ -1,5 +1,10 @@
 # Matrix for suggesting drafts/RFCs for analysis
 
+- Document Name: 
+- Link: 
+- Who can work on this analysis?: 
+
+
 ## Content relevance
 - Does the I-D or RFC relate to areas outlined in RFC 8280?
 - Are members of the review team already engaged in the working group?
