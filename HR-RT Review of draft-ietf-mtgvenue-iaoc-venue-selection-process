@@ -1,0 +1,180 @@
+This is a review done within the framework of the Human Rights Review
+Team, is was done by Beatrice Martini and Niels ten Oever. The Human
+Rights Review Team aims to implement and improve the guidelines for
+human rights considerations provided in RFC8280, and seek to mitigate
+potentially adverse human rights impacts that IETF and IRTF documents
+might have.
+
+
+Document: draft-ietf-mtgvenue-iaoc-venue-selection-process
+
+Review:
+Having organized several international events for free and open
+technology communities, also of the size of most IETF meetings
+(1000-1500 participants, see
+https://datatracker.ietf.org/stats/meeting/overview), we very much
+appreciate the attention to details that the draft shows in regards to
+venue selection objectives, criteria and requirements.
+
+Review Date: 2018-04-18
+IETF LC End Date: 2018-04-19
+
+We identified room for potential improvements in a few sections of the
+document, and are sharing them with the aim to contribute to strengthen
+the accessibility and inclusiveness of future IETF meetings.
+
+1)
+Section: 2. Venue Selection Objectives/ 2.1. Core Values
+
+Text from draft:
+"Inclusiveness: We would like to facilitate the onsite or remote
+participation of anyone who wants to be involved."
+
+We suggest an edit along these lines:
+"We would like to facilitate the onsite or remote participation of
+anyone who wants to be involved and who may contribute to the diversity
+of perspectives represented in the working sessions"
+
+The edit aims to:
+
+* Clarify that the meeting wants to welcome both folks who already know
+they want to participate, and folks who might have great contributions
+to share but might not yet know about the IETF or how to join the
+community. In this way the document makes explicit the intention to
+proactively make participation accessible and welcoming to everyone,
+newcomers included.
+
+* State that modeling for the participation of a greater diversity of
+perspectives is critical to achieve stronger and increasingly inclusive
+technical outcomes.
+
+2)
+We find that the current draft is not totally consistent in regards to
+the affordability of participation.
+
+Initially, it acknowledges that many participants are self-funded, and
+that budget solutions should be available. That's great.
+
+>From Section 2.  Venue Selection Objectives/ 2.1. Core Values:
+"Economics:
+Meeting attendees participate as individuals. While many are
+underwritten by employers or sponsors, many are self-funded.  In order
+to reduce participation costs and travel effort, we therefore seek
+locations that provide convenient budget alternatives for food and
+lodging, and which minimize travel segments from major airports to the
+Venue.  Within reason, budget should not be a barrier to accommodation."
+
+But then, in Section 3.2.2, things sounds less affordable.
+
+>From Section 3.2.2 Basic Venue Criteria:
+"The cost of guest rooms, meeting space, meeting food and beverage is
+affordable, within the norms of business travel."
+
+"Business travel" has commonly a higher cost than "self-funded budget
+travel".
+
+Therefore, we think that the draft is not fully consistent/clear in
+regards to how much affordability of participation is prioritized.
+
+3)
+We invite to consider the addition of a few items to Section 3.2.2.
+Basic Venue Criteria.
+
+3.1)
+"All Meeting Venues should have at least one gender neutral restroom
+with stalls on each floor."
+
+Gender neutral restrooms are essential to contribute to the
+inclusiveness of the an event venue.
+
+They allow:
+
+* Transgender, genderqueer, non-binary attendees to feel safe from being
+harassed or attacked for their gender non-conformity;
+
+* Carers of children who are not of the same gender to help their kids
+to use the restroom when they are not old enough to go alone.
+
+Note: Restrooms with installed urinals are not suitable to be used as
+gender neutral restrooms, unless the urinals are made unavailable.
+Therefore the most suitable restroom facilities to be used as gender
+neutral restrooms are those with stalls.
+
+3.2)
+"The Meeting Venue should have at least one dedicated infant feeding
+room and one family restroom."
+
+See information and suggestions about feeding room settings and policy
+at: ht
+tp://geekfeminism.wikia.com/wiki/Breastfeeding_and_infant_care_support
+
+Notes on terminology:
+
+"Infant and children carers" is a recommended terminology in place of
+the often used (and often incorrect) "mothers". Not all carers are mothers.
+
+"Infant feeding" is a recommended terminology in place of the often used
+(and often incorrect) "breastfeeding". Infants can be fed also with
+bottle, formula, etc.
+
+3.3)
+"The event should be accessible to non-smokers and those with
+respiratory conditions. Therefore all meeting spaces during daytime and
+nighttime should make it possible to fully participate in the scheduled
+activities without being exposed to second-hand smoke."
+
+This means that it would not be ok to have a working session/event
+taking place in a smoky room, since this would not allow all folks who
+want to participate to actually be in that room.
+
+3.4)
+We believe that supporting parents with small children attending events
+is a great step forward towards inclusivity.
+
+We would like the document to address this aspect in regards to venue
+requirements.
+
+In particular, it would be helpful for the document to provide
+information about the following:
+
+* Can participants feel comfortable and welcome to have their kid(s)
+with them at the event? If so, are kids under a certain age not allowed
+to be in session rooms?
+
+* Would the venue provide a childcare space and service, like a
+play/activity room managed by a licensed childcare professional? See
+further information about childcare at events at:
+http://geekfeminism.wikia.com/wiki/Childcare
+
+If the organization determines that children should not be allowed to
+access meetings, and/or no childcare space and service can be provided,
+it would anyway be important for the document to acknowledge that the
+organization is aware of the limitation that this would constitute and
+that this might hinder the participation of some attendees.
+
+4)
+We invite to consider the addition of one item to Section 3.3 Other
+Considerations.
+
+Section 3.2.2 Basic Venue Criteria says:
+"The Facility is accessible or reasonable accommodations can be made to
+allow access by people with disabilities."
+
+This is great!
+At the same time, sometimes one person's required accommodation might
+create a barrier for someone else. For example, the same session could
+be attended by one participant with a guide dog, and another participant
+with a severe allergy to dogs.
+
+It would be ideal if the document could mention a consideration on this
+type of conflicting requirements that might occur. For example, it could
+say that, in the full respect of everyone's needs, the organizing team
+will aim to find the most suitable solution on a case by case basis.
+
+This statement should also include information about who / what team can
+be contacted to ask for information in case of need.
+
+5)
+Correct typo in the title: "3.3. Other Consideraitons"
+
+Edit: "3.3. Other Considerations"
