@@ -1,0 +1,222 @@
+
+
+Hi,
+
+Thanks to the authors and the working group for developing the
+comprehensive drafts.
+
+As part of efforts in the Human Rights Protocol Considerations (HRPC)
+group, Sandeep and I have reviewed the human rights considerations (RFC
+8280) in the three drafts.
+
+Following the updates to the drafts on July 2nd, we reached out to some
+of you. We are aware that some of the concerns we raise may no longer
+apply since the updates; we are sharing our review hoping to engage you
+on our other observations (and their solutions) in next week's HRPC
+sessions at IETF102.
+
+Review: A Firmware Update Architecture for Internet of Things Devices
+=====================================================================
+
+An assessment of human rights considerations in
+* draft-ietf-suit-architecture-01
+* draft-moran-suit-manifest-02
+* draft-ietf-suit-information-model-01
+
+Introduction
+------------
+‘A Firmware Update Architecture for Internet of Things Devices’
+(draft-ietf-suit-architecture-01) proposes an architecture for firmware
+update mechanism suitable for IoT devices, and lists various
+requirements associated with the same. [SUIT-ARCH]
+
+‘A CBOR-based Manifest Serialisation Format’
+(draft-moran-suit-manifest-02) describes the format of the manifest
+which contains firmware update metadata for a device. The draft defines
+components of the manifest and specifies their functions in
+firmware-update process. [SUIT-MF]
+
+‘Firmware Updates for Internet of Things Devices - An Information Model
+for Manifests’ (draft-ietf-suit-information-model-01) describes the
+information in the manifest, a threat model for the architecture, and
+provides security requirements for the mitigation of these threats.
+[SUIT-IM]
+
+This is a review of the human rights considerations in the three drafts.
+(See [RFC8280], ‘Research Into Human Rights Protocol Considerations’).
+
+Human Rights Considerations
+---------------------------
+
+# Privacy ([RFC8280], section 6.2.2)
+
+Privacy considerations are with regards to maintaining the
+confidentiality of firmware image and manifest. Both the firmware image
+and manifest contain information about the device. As mentioned in the
+older version of the drafts, Class ID and Vendor ID are typically
+compiled as strings into the firmware image. If an untrusted
+intermediary storage is assumed, as in [SUIT-ARCH], this device
+information will be available to all intermediary and snooping parties,
+which may violate the device operator’s privacy. Additionally, device
+information can be used by an attacker to design and mount targeted
+attacks on the device.
+
+Concern: The drafts are inconsistent in its recommendation of encryption
+of firmware images. Section 3.3.13 of [SUIT-IM] says that the
+information model must enable encrypted payloads to prevent the
+attackers from reading the content of the firmware images whereas
+Section 3.3 of [SUIT-ARCH] leaves the choice of encryption to the
+authors/OEMs.
+
+Recommendation: We recommend removing these inconsistencies, and that
+the drafts mandate the encryption of the firmware image. Accordingly, we
+recommend the relevant text of section 3.3 of [SUIT-ARCH] be updated.
+
+
+Concern: The manifest also contains information of the device (such as
+device-manufacturer’s name, model name, and model number) which an
+end-user operates, but the drafts have not recommended the encryption of
+the manifest.
+
+Recommendation: We recommend that the drafts ([SUIT-ARCH], [SUIT-MF])
+recommend encryption of the manifest as well.
+
+# Security  ([RFC8280], section 6.2.4)
+
+Security concerns have been emphasised in the draft [SUIT-IM]; various
+threats have been covered in the thread model (section 3.1 of [SUIT-IM])
+and possible mitigations have been discussed.
+
+# Internationalization ([RFC8280], section 6.2.5) and Localization
+([RFC8280], section 6.2.12)
+
+Concern: For the specific question, “Does your protocol have text
+strings that have to be understood or entered by humans?” [RFC8280]: An
+email highlighting the recent updates to the drafts [MF-MAIL] notes that
+a container in the manifest will have “severable” text meant for humans.
+However, it is not clear from the draft what this text will contain.
+Since the update server may choose to send the text to the device (if
+the device supports it), human readability of these text strings is a
+concern from a human rights perspective.
+
+Recommendation: Support of multiple languages for text meant to be read
+by humans advances access to information and non-discrimination. OEMs
+must have the ability to internationalise and localise any text meant to
+be read by humans. CBOR does support UTF-8; we recommend that the draft
+make the internationalisation ability explicit for all text meant for
+humans.
+
+# Open standards ([RFC8280], section 6.2.7)
+ 
+Pertaining to the question in [RFC8280], “is your protocol fully
+documented in such a way that it could be easily implemented, improved,
+built upon, and/or further developed?”, we found some statements in the
+drafts that might impede further improvement and development:
+* The use of the ‘extensions’ field of the manifest, defined in Section
+2.1 of [SUIT-MF], has not been defined.
+* Section 4.18 of [SUIT-IM] says that linked manifests must be installed
+simultaneously. For clarity, we recommend that the draft specify that
+each linked manifest must be validated separately.
+
+
+# Reliability ([RFC8280], section 6.2.14)
+
+Reliability concerns have been addressed in Section 3.5 and 3.6 of
+[SUIT-ARCH].
+
+Concern: With regard to the question, “[d]o you have a documented way to
+announce degradation?” [RFC8280], [SUIT-ARCH] does not provide any
+mechanism to convey the degradation to either the author or the device
+operator.
+
+Recommendation: We recommend that [SUIT-ARCH] recommend that degradation
+is made apparent to the operator.
+
+
+Concern: With regard to the question, “[d]o you have measures in place
+for recovery or partial healing from failure?”, Section 3.6 of
+[SUIT-ARCH] says that a recovery mechanism is optional. The lack of a
+recovery mechanism will render the device inoperational in case an
+update fails; this aspect is especially important in the case of
+constrained devices where communication about the failure of the update
+may not always be apparent to the operator.
+
+Recommendation: Instead of making the recovery mechanism optional, we
+suggest that the firmware architecture recommend or mandate the
+inclusion of a recovery mechanism to ensure high reliability of the
+devices in case the update fails.
+
+# Integrity ([RFC8280], section 6.2.16)
+Integrity concerns mentioned have been adequately addressed in the
+Section 3.3 of the [SUIT-IM].
+
+# Authenticity ([RFC8280], section 6.2.17)
+Authenticity concerns have been adequately addressed in the Section 3.3,
+in particular, the subsections 3.3.5, 3.3.6 of [SUIT-IM].
+
+# Outcome Transparency ([RFC8280], section 6.2.12)
+Whenever possible, the fact whether a update has been successful or
+unsuccessful should be conveyed to the device operator. In case of
+update failure, an error description should be provided. The status
+tracker, described in Section 2 of [SUIT-ARCH] as offering device
+management functionalities and update progress tracking, can serve this
+function. However, its mechanism is not sufficiently clear in the
+drafts. The coordination between status tracker and communicator has
+been mentioned in Section 3.10 of [SUIT-ARCH], but the mechanism has not
+been elaborated on.
+
+# Others
+After going through the drafts, we found no concerns for Heterogeneity
+Support ([RFC8280], section 6.2.8) since the architecture makes little
+or no assumptions about the devices or transport of the firmware image
+and manifest. Concerns in the following sections are out of scope:
+Connectivity ([RFC8280], section 6.2.1), Anonymity ([RFC8280], section
+6.2.9), Pseudonymity ([RFC8280], section 6.2.10), Decentralization ([RFC
+8280], section 6.2.13), Accessibility ([RFC8280], section 6.2.11),
+Content Agnosticism ([RFC8280], section 6.2.3), and Censorship
+Resistance ([RFC8280], section 6.2.6).
+
+#Additional suggestions
+
+Section 3.9 of [SUIT-ARCH] talks about multiple authorizations wherein
+an unnecessary distinction has been made between critical infrastructure
+and non-critical infrastructure. Even in non-critical infrastructure,
+operators would want to the ability to install updates according to
+their own preferences. In such scenarios, forced installations may
+violate user’s control of the device. Accordingly, we propose that the
+device operator SHOULD have the authority to accept or reject firmware
+updates.
+
+References
+----------
+[RFC8280] ten Oever, N., Cath, C., “Research into Human Rights Protocol
+Considerations”, RFC 8280, October 2017,
+<https://www.rfc-editor.org/info/rfc8280>.
+[SUIT-ARCH] Moran, B., Meriac, M., Tschofenig, H., “A Firmware Update
+Architecture for Internet of Things Devices”,
+draft-ietf-suit-architecture-01, June 2018,
+<https://datatracker.ietf.org/doc/draft-ietf-suit-architecture/>.
+[SUIT-MF] Moran, B., Meriac, M., Tschofenig, H., “A CBOR-based Manifest
+Serialisation Format”, draft-moran-suit-manifest-02, January 2018,
+<https://datatracker.ietf.org/doc/draft-moran-suit-manifest/>.
+[SUIT-IM] Moran, B., Tschofenig, H., Birkholz, H., Jimenez, J.,
+“Firmware Updates for Internet of Things Devices - An Information Model
+for Manifests”, draft-ietf-suit-information-model-01, June 2018,
+<https://datatracker.ietf.org/doc/draft-ietf-suit-information-model/>.
+[MF-MAIL] Moran, B., “[Suit] [suit]: draft-moran-suit-manifest-02”, IETF
+Mail Archive, July 2018,
+<https://mailarchive.ietf.org/arch/msg/suit/rc1gkzf2jhICwcXHSq5JggdGiHo>
+
+Thanks to Mallory K., Amelia A., Niels t. and Sunil A. for their inputs.
+
+Regards,
+Gurshabad
+
+
+
+_______________________________________________
+hrpc mailing list
+hrpc@irtf.org
+https://www.irtf.org/mailman/listinfo/hrpc
+
+
