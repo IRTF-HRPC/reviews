@@ -23,4 +23,4 @@ You can share your analysis with the authors of the draft(s) you analyzed, the r
 
 In terms of uniformity you can consider starting your review of with the following text:
 
-This is a review done within the framework of the Human Rights Review Team, is was done by $NAME1 and $NAME2 . The Human Rights Review Team aims to implement and improve the guidelines for human rights considerations provided in RFC8280, and seek to mitigate potentially adverse human rights impacts that IETF and IRTF documents might have.
+Human Rights reviews are developed by a group of individuals in the IRTF and IETF. They work together to encourage each other to do these detailed reviews as contributions to the IETF open review process. Human Rights reviews are individual contributions. The authors hope that the comments will be taken into consideration by the draft authors, groups and IESG.
