@@ -1,0 +1,19 @@
+I think the current draft version does a good job of enumerating the privacy challenges. The issue is that we are moving the privacy risk away from a malicious web page to a malicious actor in your local network. Review for the latest version (https://tools.ietf.org/html/draft-ietf-rtcweb-mdns-ice-candidates-02):
+
+
+Section 3.2:
+>   An ICE agent may use a hostname resolver that transparently supports
+>   both Multicast and Unicast DNS.  In this case the resolution of a
+>   ".local" name may happen through Unicast DNS as noted in [RFC6762],
+>   Section 3.
+
+This might mean that a DNS request containing {UUID}.local name would be sent out to the larger Internet, which would increase the risk of the privacy issues noted in the document.
+
+Section 5.1:
+It seems that this would require a corresponding update to https://www.w3.org/TR/webrtc-stats/#icecandidate-dict*? 
+
+Section 5.3:
+Why SHOULD instead of MUST in this section? Also s/important/crucial in the first sentence. Given that we are generating universally unique identifiers, if we do not expire these identifiers, they will make matters much worse from a tracking perspective.
+
+Section 6.3:
+This is a serious issue. Wondering if this could be mitigated by the browser additionally spoofing MAC addresses for the network interfaces. There of course might be policy problems with this. 
