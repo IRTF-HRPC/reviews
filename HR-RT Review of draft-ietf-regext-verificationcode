@@ -1,0 +1,237 @@
+HR Review: Verification Code Extension for the EPP
+==================================================
+
+An assessment of human rights considerations in
+draft-ietf-regext-verificationcode-03.
+
+Introduction
+------------
+The ‘Verification Code Extension for the Extensible Provisioning
+Protocol (EPP)’ ([VCEPP], hereinafter also referred to as the “draft”)
+describes an extension in the EPP object mappings which supports adding
+a verification code provided by a third-party known as the Verification
+Service Provider (VSP). If the registrant’s data is not “verified” by
+the VSP, it may be prohibited from requesting the execution of EPP
+transform commands.
+
+This is a review of the human rights considerations in the the draft.
+(See [RFC 8280], ‘Research Into Human Rights Protocol Considerations’).
+We believe that the draft does not make adequate considerations for
+human rights: The implementation of the proposed extension will impact
+domain registrants’ right to freedom of expression, right to freedom of
+assembly and association, and right to privacy.
+
+Human Rights Considerations
+---------------------------
+
+# Privacy ([RFC8280], section 6.2.2)
+
+From [RFC8280]: “Could your protocol improve data minimization?” and
+“Does your document identify potentially sensitive data logged [...]
+and/or for how long that data needs to be retained for technical reasons?”
+
+The draft leaves the precise data shared with the VSP “up to the
+policies of the locality” and outside the scope of the draft. In the
+'domain-registrant' type of verification, both the registrant contact
+information and domain name are sent to the VSP. The registrant contact
+information is sensitive personal information, including name, address,
+telephone number and email address. [RFC5733]
+
+The draft notes that, “the data verified by the VSP MUST be stored by
+the VSP along with the generated verification code to address any
+compliance issues.” The information is retained and “may be accessed at
+a later time.”
+
+Registrants whose personal information will be shared in this way have
+no control over these aspects, which negatively impacts their privacy.
+
+# Content Agnosticism ([RFC8280], section 6.2.3)
+
+From [RFC8280]: “Does your protocol make decisions based on the payload
+[...]? Does your protocol prioritize certain content or services over
+others [...]?”
+
+Section 1 of the draft states that the “Verification Service Provider
+(VSP) is a certified party to verify that data is in compliance with the
+policies of a locality.” Therefore, the extension facilitates the
+prioritization of certain individuals based on how the VSP judges
+whether the registrants’ data is compliant. Registrants’ data which is
+not in “compliance” with the local regulations will not receive a
+verification code from the VSP, which gives the VSP the power to
+restrict individuals from registering/modifying a domain name, and
+limits their right to freedom of expression.
+
+# Censorship Resistance ([RFC8280], section 6.2.6)
+
+From [RFC8280]: “Can your protocol contribute to filtering in such a way
+that it could be implemented to censor data or services?  [...]”
+
+By design, the extension facilitates filtering: the VSP will receive the
+power to “verify” data on arbitrary grounds when determining whether
+registrant data is in “compliance” with local regulations. The draft
+also identifies examples of these scenarios: the VSP will check whether
+“the domain name is not prohibited”, or whether the “registrant is a
+valid individual, organization, or business in the locality.” On these
+grounds, the VSP can accept or reject attempts to register domain names.
+Thus, the extension explicitly provides filtering and censorship
+abilities to the VSP, which are inimical to the registrants’ freedom of
+expression.
+
+# Open Standards ([RFC8280], section 6.2.7)
+
+From [RFC8280], “Are you aware of any patents that would prevent your
+standard from being fully implemented [RFC6701] [RFC8179]?”
+
+There is an IPR declaration filed by Verisign Inc. for an older version
+of the draft mentioning the relevant [PATENT]. The declaration
+facilitates mostly open development, giving minimal assertion rights
+over the license for Verisign Inc.
+
+From [RFC8280]: “Is your protocol fully documented in such a way that it
+could be easily implemented, improved, built upon, and/or further
+developed?”
+
+Several key details that will form the complete mechanism for the
+verification code are not included in the draft (as it only describes
+the extension), but have been offered in the [PATENT]. This includes a
+description of the grace period within which “the requirement set of
+verification codes may be sent before the object becomes non-compliant”,
+and a clear depiction of the flow of the request detailed in Fig. 1 of
+the [PATENT].
+
+# Decentralisation ([RFC8280], section 6.2.14)
+
+From [RFC8280]: “What is the potential for discrimination against users
+of your protocol?”
+
+There is immense potential for discrimination against registrants whose
+data will be subject to “verification” by the VSP. The proposed
+extension provides the VSP powers to discriminate against registrants
+based on the information it receives, which may include names and
+addresses, and which may be further compared to other “local data
+sources” [VCEEPP] to indicate legal sex, religious affiliation, or
+ethnicity.
+
+From [RFC8280]: “Can your protocol be used to negatively implicate users
+(e.g., incrimination, accusation)?”
+
+There is potential for negative implication: a malicious registrant may
+submit a request for a domain name considered legally “prohibited” by
+the locality, accompanied with someone else's personal information.
+Registrant information is sent to the VSP, an entity that may be
+associated with law enforcement, which creates potential misuse for
+false incrimination/accusation.
+
+# Reliability ([RFC8280], section 6.2.14)
+
+No fallback mechanism is specified within the draft for when the VSP is
+offline or unavailable. In the event that the VSP is not available to
+process the sent object, the registrants’ requests will not be performed.
+
+Similarly, when considering how long the VSP takes to process a
+particular request, Section 0057 of the [PATENT] states that a “pending
+compliance status indicator may indicate that the object is not
+compliant by [...] a time, or grace period, in which the requirement set
+of verification codes may be sent before the object becomes
+non-compliant.” Therefore, if the VSP does not respond within the grace
+period, the object will be considered “non-compliant”. The proposed
+extension thus creates a problematic assumption of  “non-compliance”,
+which is at odds with the presumption of innocence.
+
+# Confidentiality ([RFC8280], section 6.2.15)
+
+From [RFC8280]: “What options exist for [...] implementers to choose to
+limit the information shared with each entity?”
+
+No such mechanisms are present which allow the registrants to limit the
+information that will be accessed by the VSP.
+
+# Integrity ([RFC8280], section 6.2.16)
+
+From [RFC8280]: “Does your protocol maintain, assure, and/or verify the
+accuracy of payload data? Does your protocol in any way allow the data
+to be (intentionally or unintentionally) altered?”
+
+The XML Signature maintains authenticity and integrity of the
+verification code. However, we are not sure whether the object can be
+altered by the VSP before appending the verification code to the shared
+object. If so, it creates the potential for false implication (also see
+section on Decentralisation) by the VSP.
+
+# Outcome transparency ([RFC8280], section 6.2.19)
+
+From [RFC8280]: “Are the effects [...] fully and easily comprehensible
+[...]?”
+
+As highlighted earlier in the review, many details (some out of the
+scope of the draft) may be opaque to registrants with the implementation
+of the proposed extension, including but not limited to, the exact data
+shared with the VSP.
+
+Additionally, as the [PATENT] notes, a “rejection of the verification
+request may be transmitted [...]” by the VSP. Therefore, while the
+proposed extension technologically facilitates a legal mechanism, there
+are no built-in measures that facilitate human rights related to legal
+transparency, remedy, or due process. For example, the VSP has no option
+to append an explanation for sending back a rejection.
+
+Conclusion
+----------
+In summary, the proposed extension in its implementation allows the VSP
+to have enormous censorship and discriminatory power. The arbitrary and
+opaque mechanism to “verify” compliance with local regulations gives
+disproportionate powers to impede freedom of expression, right to
+privacy, freedom of association, and the right to non-discrimination.
+
+Some of the concerns highlighted in this review have already been
+pointed out in the past in and outside the IETF. [NLLZMSG][ART-19] We
+hope that the WG considers the potential adverse human rights impact
+that the proposed extension creates before recommending its
+standardisation. We understand that some of the concerns in the review
+do not stem purely from the proposed extension, but due to the
+unavoidable consequences of implementing the extension. The WG could
+consider adding the details of those to the draft as well, so as to make
+its impact on human rights clearer.
+
+References
+----------
+[RFC8280] ten Oever, N., Cath, C., “Research into Human Rights Protocol
+Considerations”, RFC 8280, October 2017,
+<https://www.rfc-editor.org/info/rfc8280>.
+[VCEEPP] Gould, J., “Verification Code Extension for the Extensible
+Provisioning Protocol (EPP)”, draft-ietf-regext-verificationcode-03,
+April 2018,
+<https://datatracker.ietf.org/doc/draft-ietf-regext-verificationcode/>.
+[IP-DECL] Ward, M., “Verisign Inc.'s Statement about IPR related to
+draft-gould-eppext-verificationcode”, October 2015,
+<https://datatracker.ietf.org/ipr/2703/>
+[RFC5730] Hollenbeck, S., “Extensible Provisioning Protocol (EPP)”, RFC
+5730, August 2009,
+<https://www.rfc-editor.org/info/rfc5730>
+[RFC5731] Hollenbeck, S., “Extensible Provisioning Protocol (EPP) Domain
+Name Mapping”, RFC 5731, August 2009,
+<https://www.rfc-editor.org/info/rfc5731>.
+[RFC5732] Hollenbeck, S., “Extensible Provisioning Protocol (EPP) Host
+Mapping”, RFC 5732, August 2009,
+<https://www.rfc-editor.org/info/rfc5732>.
+[RFC5733] Hollenbeck, S., “Extensible Provisioning Protocol (EPP)
+Contact Mapping”, RFC 5733, August 2009,
+<https://www.rfc-editor.org/info/rfc5733>.
+[PATENT] Waldron, J., et al. “Domain Name Operation Verification Code
+Generation and/or Verification”, United States Patent Serial No.
+14/868,972, September 2015,
+<https://patents.google.com/patent/US20170093793A1/en?oq=United+States+Patent+Serial+No.+14%2f868%2c972>.
+[NLLZMSG] ten Oever, N., “Re: [regext] I-D Action:
+draft-ietf-regext-verificationcode-01.txt”, IETF Mail Archive: regext,
+April 2017, 
+<https://mailarchive.ietf.org/arch/msg/regext/EIK0E7ins874q8DmP37yg7AzAQI>.
+[ART-19] Article 19 Digital, “Corporate actors must not facilitate human
+rights violations through new Chinese rules”, Article 19, December 2016,
+<https://www.article19.org/resources/corporate-actors-must-not-facilitate-human-rights-violations-through-new-chinese-rules/>.
+
+Acknowledgements
+----------------
+Thanks to Paul Kurian for research inputs. Thanks to Amelia
+Andersdotter, Mallory Knodel, Sunil Abraham and Swaraj Barooah for their
+feedback. Please note that acknowledgement here does not necessarily
+imply endorsement of the contents of the review.
